@@ -2,14 +2,13 @@ from PIL import Image, ImageDraw
 import random
 import string
 
-def createCanvas():
-    imageLength = int(100*len(pw_split)/3)
-    imageHeight = 500
-
+def createCanvas(length):
+    imageLength = int(100*length/3)
+    imageHeight = 520
     im = Image.new('RGB', (imageLength, imageHeight), color = 'white')
     im.save('output.png')
 
-def randomStringwithDigitsAndSymbols(stringLength=10):
+def generateRandomPW(stringLength):
     password_characters = string.ascii_letters + string.digits + string.punctuation
     return ''.join(random.choice(password_characters) for i in range(stringLength))
 
@@ -20,20 +19,22 @@ def encodePassword (pw_input, level):
     for char in pw_split:
         pw_numValues.append(ord(char))
 
-    pw_color_vals = tuple(pw_numValues[x:x + 3]  
+    pw_color_vals = tuple(pw_numValues[x:x + 3]
         for x in range(0, len(pw_numValues), 3))
 
+    # For debugging purposes/ delete later
     print(pw_split)
     print(pw_numValues)
     print(pw_color_vals)
 
-    imageLength = int(100*len(pw_split)/3)
-    imageHeight = 500
+    imageLength = int(100*len(pw_split))
+    imageHeight = 520
 
     im = Image.open("output.png")
     draw = ImageDraw.Draw(im)
 
     if len(pw_numValues) % 3 == 0:
+        pw_color_vals = pw_color_vals + pw_color_vals + pw_color_vals + pw_color_vals + pw_color_vals + pw_color_vals
         for i in range(len(pw_color_vals)):
             draw.rectangle([(30*i, level), (imageLength,imageHeight)], fill='rgb{}'.format(tuple(pw_color_vals[i])), outline=None, width=0)
     else:
@@ -47,18 +48,12 @@ def encodePassword (pw_input, level):
     im.save('output.png')
 
 pw_input = input("Enter a password: ")
+pw_len = len(list(pw_input))
+createCanvas(pw_len)
 
-# Will Clean up Later
 encodePassword(pw_input, 0)
-encodePassword(randomStringwithDigitsAndSymbols(), 40)
-encodePassword(randomStringwithDigitsAndSymbols(), 80)
-encodePassword(randomStringwithDigitsAndSymbols(), 120)
-encodePassword(randomStringwithDigitsAndSymbols(), 160)
-encodePassword(randomStringwithDigitsAndSymbols(), 200)
-encodePassword(randomStringwithDigitsAndSymbols(), 240)
-encodePassword(randomStringwithDigitsAndSymbols(), 280)
-encodePassword(randomStringwithDigitsAndSymbols(), 320)
-encodePassword(randomStringwithDigitsAndSymbols(), 360)
-encodePassword(randomStringwithDigitsAndSymbols(), 400)
-encodePassword(randomStringwithDigitsAndSymbols(), 440)
-encodePassword(randomStringwithDigitsAndSymbols(), 480)
+positionDown = 40
+while positionDown != 520:
+    randomNumber = random.randint(10,32)
+    encodePassword(generateRandomPW(randomNumber), positionDown)
+    positionDown += 40
