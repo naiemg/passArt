@@ -51,9 +51,13 @@ pw_input = input("Enter a password: ")
 pw_len = len(list(pw_input))
 createCanvas(pw_len)
 
-encodePassword(pw_input, 0)
-positionDown = 40
-while positionDown != 520:
-    randomNumber = random.randint(10,32)
-    encodePassword(generateRandomPW(randomNumber), positionDown)
+my_pw_position = random.randint(0,12)*40
+positionDown = 0
+
+while positionDown < 520:
+    if positionDown == my_pw_position:
+        encodePassword(pw_input, my_pw_position)
+    else:
+        randomNumber = random.randint(10,32)
+        encodePassword(generateRandomPW(randomNumber), positionDown)
     positionDown += 40
