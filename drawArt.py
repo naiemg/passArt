@@ -58,6 +58,6 @@ while positionDown < 520:
     if positionDown == my_pw_position:
         encodePassword(pw_input, my_pw_position)
     else:
-        randomNumber = random.randint(10,32)
+        randomNumber = random.randint(len(pw_input),32)
         encodePassword(generateRandomPW(randomNumber), positionDown)
     positionDown += 40
