@@ -51,7 +51,7 @@ pw_input = input("Enter a password: ")
 pw_len = len(list(pw_input))
 createCanvas(pw_len)
 
-my_pw_position = random.randint(0,12)*40
+my_pw_position = random.randint(0,520)
 positionDown = 0
 
 while positionDown < 520:
@@ -60,4 +60,4 @@ while positionDown < 520:
     else:
         randomNumber = random.randint(len(pw_input),32)
         encodePassword(generateRandomPW(randomNumber), positionDown)
-    positionDown += 40
+    positionDown += 1   # decrease this value to add more layers
