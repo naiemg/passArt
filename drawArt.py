@@ -2,9 +2,10 @@ from PIL import Image, ImageDraw
 import random
 import string
 
+imageLength = 2048
+imageHeight = 1536
+
 def createCanvas(length):
-    imageLength = int(100*length/3)
-    imageHeight = 520
     im = Image.new('RGB', (imageLength, imageHeight), color = 'white')
     im.save('output.png')
 
@@ -27,19 +28,16 @@ def encodePassword (pw_input, level):
     print(pw_numValues)
     print(pw_color_vals)
 
-    imageLength = int(100*len(pw_split))
-    imageHeight = 520
-
     im = Image.open("output.png")
     draw = ImageDraw.Draw(im)
 
     if len(pw_numValues) % 3 == 0:
-        pw_color_vals = pw_color_vals + pw_color_vals + pw_color_vals + pw_color_vals + pw_color_vals + pw_color_vals
+        pw_color_vals = pw_color_vals *20
         for i in range(len(pw_color_vals)):
             draw.rectangle([(30*i, level), (imageLength,imageHeight)], fill='rgb{}'.format(tuple(pw_color_vals[i])), outline=None, width=0)
     else:
-        pw_numValues = pw_numValues + pw_numValues + pw_numValues + pw_numValues + pw_numValues + pw_numValues
-        pw_color_vals = tuple(pw_numValues[x:x + 3]  
+        pw_numValues = pw_numValues *21
+        pw_color_vals = tuple(pw_numValues[x:x + 3]
         for x in range(0, len(pw_numValues), 3))
 
         for i in range(len(pw_color_vals)):
@@ -51,13 +49,13 @@ pw_input = input("Enter a password: ")
 pw_len = len(list(pw_input))
 createCanvas(pw_len)
 
-my_pw_position = random.randint(0,520)
+my_pw_position = random.randint(0,imageHeight)
 positionDown = 0
 
-while positionDown < 520:
+while positionDown < imageHeight:
     if positionDown == my_pw_position:
         encodePassword(pw_input, my_pw_position)
     else:
         randomNumber = random.randint(len(pw_input),32)
         encodePassword(generateRandomPW(randomNumber), positionDown)
-    positionDown += 1   # decrease this value to add more layers
+    positionDown += 5   # decrease this value to add more layers
