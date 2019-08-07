@@ -7,7 +7,7 @@ imageHeight = 1000
 filename = 'encrypted.png'
 
 def createCanvas():
-    im = Image.new('RGBA', (imageLength, imageHeight))
+    im = Image.new('RGB', (imageLength, imageHeight))
     im.save(filename)
 
 def generateRandomPW(stringLength):
@@ -37,7 +37,7 @@ def encodePassword(pw_input, level):
         for x in range(0, len(pw_numValues), 3))
 
     for i in range(len(pw_color_vals)):
-        draw.rectangle([(10*i, level), (10*i+10,level+10)], fill='rgb{}'.format(tuple(pw_color_vals[i])), outline=None, width=0)
+        draw.rectangle([(level, 10*i), (level+10, 10*i+10)], fill='rgb{}'.format(tuple(pw_color_vals[i])), outline='white', width=1)
 
     im.save(filename)
 
