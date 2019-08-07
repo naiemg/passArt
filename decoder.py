@@ -1,15 +1,10 @@
-from PIL import Image, ImageDraw
+from PIL import Image
 
 file1 = open("MyFile.txt","a")
 filename = 'encrypted.png'
-
 art = Image.open(filename)
 art = art.convert('RGB')
-
 width, height = art.size
-
-im = Image.open(filename)
-draw = ImageDraw.Draw(im)
 
 # Fix ranges to fit any picture
 for row in range(0, height, 10):
