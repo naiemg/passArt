@@ -66,8 +66,3 @@ while positionDown < imageHeight:
         randomNumber = random.randint(len(pw_input),32)
         encodePassword(generateRandomPW(randomNumber), positionDown)
     positionDown += 10   # decrease this value to add more layers
-
-print(random_shift)
-print(random_mod)
-print(key_position_x)
-print(key_position_y)
