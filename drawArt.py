@@ -7,6 +7,9 @@ imageHeight = 1000
 filename = 'encrypted.png'
 random_shift = random.randint(1, 254)
 random_mod = random.randint(1, 100)
+key_position_x = random.randint(1, 100)*10
+key_position_y = random.randint(1, 100)*10
+
 
 def createCanvas():
     im = Image.new('RGB', (imageLength, imageHeight))
@@ -42,7 +45,12 @@ def encodePassword(pw_input, level):    # hello
 
     for i in range(len(pw_color_vals)):
         draw.rectangle([(level, 10*i), (level+10, 10*i+10)], fill='rgb{}'.format(tuple(pw_color_vals[i])), outline='white', width=1)
-
+    
+    for i in range(len(pw_color_vals)):
+        if level == key_position_y and 10*i == key_position_x:
+            draw.rectangle([(level+.5, 10*i+.5), (level+.75, 10*i+.75)], fill='rgb{}'.format((random_shift,255,random_mod)), outline=None, width=0)
+        else:
+            draw.rectangle([(level+.5, 10*i+.5), (level+.75, 10*i+.75)], fill='black', outline=None, width=0)
     im.save(filename)
 
 pw_input = input("Enter a password: ")
@@ -61,3 +69,5 @@ while positionDown < imageHeight:
 
 print(random_shift)
 print(random_mod)
+print(key_position_x)
+print(key_position_y)
