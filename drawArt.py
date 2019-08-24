@@ -10,7 +10,6 @@ random_mod = random.randint(1, 100)
 key_position_x = random.randint(1, 100)*10
 key_position_y = random.randint(1, 100)*10
 
-
 def createCanvas():
     im = Image.new('RGB', (imageLength, imageHeight))
     im.save(filename)
