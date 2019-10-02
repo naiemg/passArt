@@ -1,6 +1,5 @@
 # Passart <sup>2</sup>: Secure passwords and sensitive documents in Art!
 
-## How it works
 My algorithm encodes text input, such as passwords or other sensitive documents. Each word is then mapped to an RGB color, thus allowing for the creation of colorful patchwork art.
 
 #### A password is encrypted in the image below: 
