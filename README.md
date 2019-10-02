@@ -6,3 +6,10 @@
 
 ### A password is encrypted in the image below: 
 <img src="https://github.com/naiemg/passArt/blob/master/encrypted.png " alt="drawing" width="100%"/>
+
+## Next Steps
+* Develop a website to easily secure & recover passwords.
+* Venture into other "dimensions", perhaps:
+  * Passart-Pi: Circles
+  * Passart <sup>3</sup>: 3-dimensional cubes
+  * Passart
