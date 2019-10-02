@@ -14,3 +14,4 @@
   * Passart <sup>3</sup>: 3-dimensional cubes
   * Passart-tri: Triangles
   * Etc . . . 
+* Develop an entire suite of art methods that users can choose from.
