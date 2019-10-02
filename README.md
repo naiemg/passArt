@@ -12,4 +12,5 @@
 * Venture into other "dimensions", perhaps:
   * Passart-Pi: Circles
   * Passart <sup>3</sup>: 3-dimensional cubes
-  * Passart
+  * Passart-tri: Triangles
+  * Etc . . . 
